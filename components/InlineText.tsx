@@ -1,4 +1,5 @@
 import { SOURCES } from "@/constants/source";
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { Text, StyleSheet, View } from "react-native";
 
 type Props = {
@@ -6,15 +7,22 @@ type Props = {
 };
 
 const InlineText = ({ letter }: Props) => {
+  const colorScheme = useThemeColor();
   const part = SOURCES.get(letter);
   if (!part) return null;
 
   return (
-    <View style={styles.container}>
-      <Text key={`${letter}`} style={styles.letter}>
+    <View>
+      <Text
+        key={`${letter}`}
+        style={[styles.letter, { color: colorScheme.alternateText }]}
+      >
         {letter}
       </Text>
-      <Text key={`${letter}-paragraph`} style={styles.paragraph}>
+      <Text
+        key={`${letter}-paragraph`}
+        style={[styles.paragraph, { color: colorScheme.alternateText }]}
+      >
         {part}
       </Text>
     </View>
@@ -22,19 +30,14 @@ const InlineText = ({ letter }: Props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginBottom: 20,
-  },
   letter: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 5,
-    textAlign: "right",
   },
   paragraph: {
     fontSize: 20,
     lineHeight: 30,
-    textAlign: "right",
+    textAlign: "auto",
   },
 });
 

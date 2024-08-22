@@ -1,25 +1,30 @@
 import { View, StyleSheet, Text, Linking } from "react-native";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
-const CopyrightBox = () => (
-  <View style={styles.copyrightBox}>
-    <Text style={styles.copyrightText}>
-      2024 אסף ספיר |{" "}
-      <Text
-        style={styles.link}
-        onPress={() => Linking.openURL("https://opensource.org/licenses/MIT")}
-      >
-        MIT License
+const CopyrightBox = () => {
+  const colors = useThemeColor();
+
+  return (
+    <View style={styles.copyrightBox}>
+      <Text style={[styles.copyrightText, { color: colors.text }]}>
+        2024 אסף ספיר |{" "}
+        <Text
+          style={[styles.link, { color: colors.primary }]}
+          onPress={() => Linking.openURL("https://opensource.org/licenses/MIT")}
+        >
+          MIT License
+        </Text>
+        {" | "}
+        <Text
+          style={[styles.link, { color: colors.primary }]}
+          onPress={() => Linking.openURL("https://github.com/assapir/neshama")}
+        >
+          GitHub
+        </Text>
       </Text>
-      {" | "}
-      <Text
-        style={styles.link}
-        onPress={() => Linking.openURL("https://github.com/assapir/neshama")}
-      >
-        GitHub
-      </Text>
-    </Text>
-  </View>
-);
+    </View>
+  );
+};
 
 export default CopyrightBox;
 
@@ -33,11 +38,9 @@ const styles = StyleSheet.create({
   },
   copyrightText: {
     fontSize: 14,
-    color: "#333",
     fontWeight: "bold",
   },
   link: {
-    color: "blue",
     textDecorationLine: "underline",
   },
 });

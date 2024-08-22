@@ -1,3 +1,4 @@
+import { useThemeColor } from "@/hooks/useThemeColor";
 import { Text, StyleSheet, View } from "react-native";
 
 type Props = {
@@ -5,9 +6,13 @@ type Props = {
 };
 
 const InlineTitle = ({ text }: Props) => {
+  const colorScheme = useThemeColor();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{text}</Text>
+      <Text style={[styles.title, { color: colorScheme.alternateText }]}>
+        {text}
+      </Text>
     </View>
   );
 };

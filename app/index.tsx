@@ -9,11 +9,13 @@ import {
 } from "react-native";
 import { useRouter } from "expo-router";
 import CopyrightBox from "@/components/Copyright";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 export default function Index() {
   const [hebrewName, setHebrewName] = useState("");
   const [isValidHebrew, setIsValidHebrew] = useState(true);
   const router = useRouter();
+  const colorScheme = useThemeColor();
 
   useEffect(() => {
     // Force RTL layout
@@ -45,8 +47,13 @@ export default function Index() {
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
-          style={[styles.input, !isValidHebrew && styles.invalidInput]}
+          style={[
+            styles.input,
+            !isValidHebrew && styles.invalidInput,
+            { color: colorScheme.text },
+          ]}
           placeholder="הכנסת שם"
+          placeholderTextColor={colorScheme.placeholder}
           value={hebrewName}
           onChangeText={handleTextChange}
           textAlign="right"
