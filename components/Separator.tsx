@@ -1,7 +1,11 @@
+import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
 const Separator = () => {
-  return <View style={styles.separator} />;
+  const colors = useThemeColor();
+
+  return <View style={[styles.separator, { backgroundColor: colors.text }]} />;
 };
 
 export default Separator;
@@ -9,7 +13,6 @@ export default Separator;
 const styles = StyleSheet.create({
   separator: {
     height: 1,
-    backgroundColor: "#000",
     marginVertical: 20,
   },
 });

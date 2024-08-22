@@ -3,10 +3,14 @@
     "name": "נ.ש.מ.ה",
     "slug": "neshama",
     "description": "An app for Yahrzeit",
-    "version": "1.0.0",
+    "githubUrl": "https://github.com/assapir/neshama",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "myapp",
+    "platforms": [
+      "android"
+    ],
+    "scheme": "neshamaeas submit --platform android ",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
@@ -19,7 +23,9 @@
         "backgroundColor": "#64B5F6"
       }
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true
     },

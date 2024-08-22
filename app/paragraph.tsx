@@ -55,7 +55,8 @@ export default function ParagraphScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    padding: 20,
+    marginBottom: 10,
     textAlign: "right",
   },
 });
