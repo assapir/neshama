@@ -2,6 +2,7 @@
   "expo": {
     "name": "נ.ש.מ.ה",
     "slug": "neshama",
+    "description": "An app for Yahrzeit",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

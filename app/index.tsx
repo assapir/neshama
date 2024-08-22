@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
+import CopyrightBox from "@/components/Copyright";
 
 export default function Index() {
   const [hebrewName, setHebrewName] = useState("");
@@ -69,6 +70,7 @@ export default function Index() {
       >
         <Text style={styles.buttonText}>הצגת פסוקים</Text>
       </TouchableOpacity>
+      <CopyrightBox />
     </View>
   );
 }

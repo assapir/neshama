@@ -16,9 +16,17 @@ export default function ParagraphScreen() {
 
   const { name } = useLocalSearchParams();
 
+  const generateWord = (word: string, idx: number) => {
+    return word
+      .split("")
+      .map((letter, index) => (
+        <InlineText key={`${idx}-${word}-${letter}-${index}`} letter={letter} />
+      ));
+  };
+
   const generateParagraphs = (hebrewName: string) => {
     const names = hebrewName.split(" ");
-    const paragraphs = [];
+    const paragraphs: React.JSX.Element[] = [];
     names.forEach((name, nameIndex) => {
       paragraphs.push(
         <InlineTitle
@@ -26,28 +34,13 @@ export default function ParagraphScreen() {
           text={`אותיות "${name}"`}
         />
       );
-      paragraphs.push(
-        name.split("").map((letter, index) => {
-          return (
-            <InlineText
-              key={`${letter}-${nameIndex}-${index}`}
-              letter={letter}
-            />
-          );
-        })
-      );
+      paragraphs.push(...generateWord(name, nameIndex));
       paragraphs.push(<Separator key={`after-${name}-${nameIndex}`} />);
     });
 
+    paragraphs.push(<InlineTitle key="neshama-title" text={`אותיות "נשמה"`} />);
     // Add NESHAMA section
-    paragraphs.push(
-      <>
-        <InlineTitle key="neshama-title" text={`אותיות "נשמה"`} />
-        {NESHAMA.split("").map((letter, index) => (
-          <InlineText key={`neshama-${index}`} letter={letter} />
-        ))}
-      </>
-    );
+    paragraphs.push(...generateWord(NESHAMA, 99999999));
 
     return paragraphs;
   };
